@@ -1,0 +1,21 @@
+{
+  "$schema": "Nucleo Wealth — Design Tokens v1",
+  "color": {
+    "brand": {
+      "navy":        { "value": "#16242B", "role": "base oscura" },
+      "hueso":       { "value": "#EFE8DC", "role": "base clara" },
+      "champagne":   { "value": "#C9A567", "role": "acento único de marca — CTAs, números, highlights" },
+      "champagnePeak": { "value": "#f0c987", "role": "reservado exclusivamente al pico de activación del hero Three.js" },
+      "slate":       { "value": "#5A6B72", "role": "secundario/neutro — texto secundario, bordes, fondo terciario" }
+    },
+    "semantic": {
+      "success": { "value": "#4C8C6E", "role": "ganancia / variación positiva" },
+      "danger":  { "value": "#B85C4A", "role": "pérdida / variación negativa" },
+      "neutral": { "value": "#5A6B72", "role": "sin cambios — alias de slate" }
+    }
+  },
+  "typography": {
+    "fontBody":   { "value": "Manrope", "role": "texto general, UI, números, casi todo" },
+    "fontAccent": { "value": "Fraunces", "role": "acentos tipográficos puntuales — una palabra o frase destacada" }
+  }
+}

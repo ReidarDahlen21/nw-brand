@@ -1,0 +1,35 @@
+{
+  "name": "nw-brand",
+  "version": "0.1.0",
+  "description": "Design system de marca de Nucleo Wealth — design tokens, tipografía, logos y componentes React. Fuente de verdad única consumida por el resto de los repos.",
+  "main": "index.js",
+  "types": "index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./index.d.ts",
+      "default": "./index.js"
+    },
+    "./tokens/*": "./tokens/*",
+    "./design-tokens.json": "./design-tokens.json",
+    "./logos/*": "./logos/*",
+    "./components/*": "./components/*",
+    "./ui_kits/*": "./ui_kits/*"
+  },
+  "files": [
+    "tokens/",
+    "logos/",
+    "components/",
+    "ui_kits/",
+    "design-tokens.json",
+    "index.js",
+    "index.d.ts"
+  ],
+  "peerDependencies": {
+    "react": ">=18"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ReidarDahlen21/nw-brand.git"
+  },
+  "license": "UNLICENSED"
+}

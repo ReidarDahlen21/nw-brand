@@ -1,0 +1,12 @@
+:root{
+--radius-s:6px;
+--radius-m:10px;
+--radius-l:16px;
+--radius-pill:999px;
+--shadow-card-on-light:0 1px 2px color-mix(in oklab,var(--color-navy) 6%,transparent),0 8px 24px color-mix(in oklab,var(--color-navy) 8%,transparent);
+--shadow-card-on-dark:0 1px 0 color-mix(in oklab,var(--color-hueso) 6%,transparent),0 12px 28px color-mix(in oklab,black 40%,transparent);
+--shadow-focus:0 0 0 3px color-mix(in oklab,var(--color-champagne) 45%,transparent);
+--ease-standard:cubic-bezier(.25,.1,.25,1); /* @kind other */
+--duration-fast:120ms; /* @kind other */
+--duration-base:200ms; /* @kind other */
+}
