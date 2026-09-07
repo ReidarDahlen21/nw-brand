@@ -26,6 +26,14 @@ variable derivada en `tokens/colors.css` (`--navy-tint-10`,
 `--hueso-shade-20`, `--champagne-tint-70`, etc.) antes de calcular un
 `color-mix()` nuevo.
 
+**Los literales viven en dos archivos de este repo, y en ninguno más:**
+`tokens/colors.css` (la paleta de marca, espejada en `design-tokens.json`) y
+`tokens/app.css` (la capa de aplicación — ver más abajo), donde hay dos:
+`--app-warning` y `--app-info`. Están ahí y no en `colors.css` porque son
+estados de una interfaz densa y ninguna superficie de marketing los carga.
+Un consumidor que lea `design-tokens.json` no los va a encontrar: es
+deliberado, ese archivo es el espejo de la **marca**, no de la extensión.
+
 ## La paleta
 
 | Token | Valor | Uso |
@@ -123,9 +131,10 @@ Qué agrega, todo con prefijo `--app-`:
 - **Radios chicos** (2px, 4px), porque `--radius-s` (6px) se nota redondo en
   un control de 32px.
 - **Variantes suave y profunda de ganancia y pérdida** para las píldoras.
-  `--color-success` y `--color-danger` siguen siendo la tinta de marca y no
-  cambian: lo que se agrega es el fondo (`-soft`) y una tinta legible encima
-  de ese fondo (`-deep`, 4.5:1 sobre la píldora).
+  `--color-success` y `--color-danger` no cambian: lo que se agrega es el
+  fondo (`-soft`) y la tinta (`-deep`). **El base no es tinta**: da 2,6:1
+  sobre una tarjeta, así que cualquier cosa que tenga que leerse va en
+  `-deep` (4,7:1 en el peor caso).
 - **Aviso e información** (`--app-warning`, `--app-info`), con la misma
   construcción base/`-soft`/`-deep`.
 
@@ -133,7 +142,11 @@ Dos reglas que sostienen todo esto:
 
 - **Es aditiva.** `tokens/app.css` no redefine ni un token de los otros
   archivos. Si se descarta entero, la marca queda como estaba y ningún
-  consumidor de marketing se entera.
+  consumidor de marketing se entera. El corolario incómodo: **los componentes
+  de `components/` no pueden consumir un token `--app-*`**, porque los carga
+  gente que no importa esta capa y se quedarían sin valor. Por eso
+  `--app-gain-soft` repite el `color-mix` que `Badge.jsx` ya tiene inline —
+  es duplicación forzada, no un descuido; si cambia uno, cambiar el otro.
 - **Aviso e información no son success ni danger.** La marca reserva esos
   dos para el dato financiero: un banner rojo de "sesión por vencer" se lee
   como una pérdida. Y tampoco son champagne, que da 1.9:1 sobre hueso y es

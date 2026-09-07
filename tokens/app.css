@@ -69,37 +69,54 @@
 
   /* ── Ganancia y pérdida: suave y profunda ─────────────────
      `--color-success` y `--color-danger` no cambian: son la tinta de marca
-     para el dato financiero y siguen siendo el punto de partida de todo lo
-     de acá. Lo que falta es la píldora: un fondo que se distinga del hueso
-     sin gritar, y una tinta que se lea encima de ese fondo.
+     para el dato financiero y el punto de partida de todo lo de acá. Lo que
+     falta es la píldora: un fondo que se distinga del hueso sin gritar, y una
+     tinta que se lea encima de ese fondo.
 
-     Los base dan 3.3:1 y 3.7:1 sobre hueso — alcanza para un ícono o un
-     borde, no para una cifra chica. Las variantes `-deep` (mezcladas hacia
-     navy) dan 4.5:1 sobre la píldora y 5.4:1 sobre hueso. */
+     **Los base no sirven como tinta.** Medidos: 3,26:1 y 3,69:1 sobre hueso,
+     y 2,64:1 y 2,99:1 sobre la tarjeta (`--hueso-shade-10`), donde no llegan
+     ni al 3:1 que WCAG pide para un objeto gráfico. Son la identidad del
+     dato, no su legibilidad.
+
+     Todo lo que tenga que leerse va en `-deep` (mezclado 60 % hacia navy):
+     4,73:1 en el peor caso contra las tres superficies donde puede caer —
+     hueso, tarjeta y su propia píldora. */
 
   --app-gain-soft: color-mix(in oklab, var(--color-success) 18%, var(--color-hueso));
-  --app-gain-deep: color-mix(in oklab, var(--color-success) 65%, var(--color-navy));
+  --app-gain-deep: color-mix(in oklab, var(--color-success) 60%, var(--color-navy));
   --app-loss-soft: color-mix(in oklab, var(--color-danger) 18%, var(--color-hueso));
-  --app-loss-deep: color-mix(in oklab, var(--color-danger) 65%, var(--color-navy));
+  --app-loss-deep: color-mix(in oklab, var(--color-danger) 60%, var(--color-navy));
+
+  /* Ojo: `--app-gain-soft` y `--app-loss-soft` son el mismo valor que el `bg`
+     inline de los tonos success/danger de `components/core/Badge.jsx`. La
+     duplicación es a propósito y no se puede quitar: Badge lo consume
+     cualquier superficie de marketing, que no importa esta capa, así que si
+     apuntara al token se quedaría sin fondo. Si cambia uno, cambiar el otro. */
 
   /* ── Estados de interfaz que no son plata ─────────────────
      La marca reserva success y danger para el dato financiero, así que un
      aviso de sistema o una nota informativa no pueden pedirlos prestados: un
      banner rojo de "sesión por vencer" se lee como una pérdida.
 
-     Champagne tampoco sirve: es el acento decorativo y da 1.9:1 sobre hueso
+     Champagne tampoco sirve: es el acento decorativo y da 1,9:1 sobre hueso
      (ADR 0009 de piramide-inversiones). El aviso es un ámbar más anaranjado
-     y más profundo que champagne — se distingue de él por saturación y por
-     uso: champagne es relleno con navy encima, el aviso tiñe texto.
+     que champagne (hue oklab 67° contra 80°) y se distingue de él también
+     por uso: champagne es relleno con navy encima, el aviso se escribe en
+     `-deep`.
 
-     Misma construcción que ganancia y pérdida: base para ícono y borde,
-     `-soft` para el fondo, `-deep` para la tinta. */
+     Misma construcción y misma advertencia que ganancia y pérdida: el base
+     es la identidad del estado (3,42:1 y 3,95:1 sobre hueso), `-soft` el
+     fondo, y **`-deep` es lo único que se puede leer** (4,89:1 y 5,31:1 en
+     el peor caso).
+
+     Son los dos únicos valores literales de esta capa: todo lo demás deriva
+     de `tokens/colors.css`. */
 
   --app-warning: #A9702C;
   --app-warning-soft: color-mix(in oklab, var(--app-warning) 18%, var(--color-hueso));
-  --app-warning-deep: color-mix(in oklab, var(--app-warning) 65%, var(--color-navy));
+  --app-warning-deep: color-mix(in oklab, var(--app-warning) 60%, var(--color-navy));
 
   --app-info: #3E7A8C;
   --app-info-soft: color-mix(in oklab, var(--app-info) 18%, var(--color-hueso));
-  --app-info-deep: color-mix(in oklab, var(--app-info) 65%, var(--color-navy));
+  --app-info-deep: color-mix(in oklab, var(--app-info) 60%, var(--color-navy));
 }
