@@ -1,0 +1,105 @@
+/* ============================================================
+   nw-brand — capa de APLICACIÓN (opt-in)
+   ============================================================
+
+   Todo lo que la marca necesita para vestir un producto denso y que ninguna
+   superficie de marketing usa. Vive en un archivo aparte a propósito: se
+   importa sólo donde hace falta y ninguna landing lo ve.
+
+   Es ADITIVA. No redefine ni un solo token de los otros archivos de
+   `tokens/`: los que ya existen aparecen acá únicamente como `var(...)`,
+   para cerrar una escala, nunca con un valor propio. Si esta capa se
+   descarta entera, la marca queda exactamente como estaba.
+
+   Requiere que `tokens/colors.css`, `tokens/spacing.css`,
+   `tokens/typography.css` y `tokens/radius-shadow.css` estén importados
+   antes: las derivaciones de acá se calculan sobre ellos.
+
+       import 'nw-brand/tokens/colors.css';
+       import 'nw-brand/tokens/spacing.css';
+       import 'nw-brand/tokens/typography.css';
+       import 'nw-brand/tokens/radius-shadow.css';
+       import 'nw-brand/tokens/app.css';
+
+   Prefijo `--app-`: un lector que ve uno sabe que sale de este archivo y que
+   el marketing no lo tiene.
+   ============================================================ */
+
+:root {
+  /* ── Densidad ──────────────────────────────────────────────
+     La escala de espaciado de marca está calibrada para marketing y arranca
+     generosa. Un panel de trabajo se mide en filas por pantalla, así que
+     necesita alturas y paddings fijos por debajo de ese piso. */
+
+  --app-bar-h: 40px;              /* barra de navegación superior */
+  --app-bar-h-l: 48px;            /* variante con subnav o buscador */
+  --app-sidebar-w: 220px;         /* nav lateral — el ancho del kit de portal */
+  --app-row-h: 32px;              /* fila de tabla densa */
+  --app-control-h: 32px;          /* input, select, botón dentro de una tabla */
+  --app-control-h-l: 40px;        /* el mismo control en un formulario */
+
+  --app-card-pad: 14px 16px;      /* tarjeta de dato */
+  --app-card-pad-tight: 10px 12px;/* tarjeta dentro de una grilla de métricas */
+  --app-cell-pad: 6px 10px;       /* celda de tabla */
+
+  --app-page-pad: var(--space-5);
+  --app-section-gap: var(--space-4);
+  --app-nav-gap: var(--space-5);
+
+  /* ── Tipografía densa ─────────────────────────────────────
+     El escalón más chico de marca es `--text-caption` (12px), pensado para
+     un pie de foto. Una tabla necesita bajar de ahí para las etiquetas y
+     tener un paso intermedio para el chrome. Los escalones que la marca ya
+     define entran por referencia, no por valor: si cambian allá, cambian
+     acá. */
+
+  --app-text-2xs: .6875rem;           /* 11px — etiquetas de métrica, encabezados de tabla */
+  --app-text-xs: var(--text-caption); /* 12px */
+  --app-text-s: .8125rem;             /* 13px — nav chrome, celdas densas */
+  --app-text-m: var(--text-body-s);   /* 14px */
+  --app-text-l: var(--text-body-m);   /* 16px */
+
+  --app-lh-dense: 1.35;               /* entre --lh-snug y --lh-normal */
+
+  /* ── Radios chicos ────────────────────────────────────────
+     `--radius-s` (6px) se nota redondo en un control de 32px. */
+
+  --app-radius-xs: 2px;
+  --app-radius-s: 4px;
+
+  /* ── Ganancia y pérdida: suave y profunda ─────────────────
+     `--color-success` y `--color-danger` no cambian: son la tinta de marca
+     para el dato financiero y siguen siendo el punto de partida de todo lo
+     de acá. Lo que falta es la píldora: un fondo que se distinga del hueso
+     sin gritar, y una tinta que se lea encima de ese fondo.
+
+     Los base dan 3.3:1 y 3.7:1 sobre hueso — alcanza para un ícono o un
+     borde, no para una cifra chica. Las variantes `-deep` (mezcladas hacia
+     navy) dan 4.5:1 sobre la píldora y 5.4:1 sobre hueso. */
+
+  --app-gain-soft: color-mix(in oklab, var(--color-success) 18%, var(--color-hueso));
+  --app-gain-deep: color-mix(in oklab, var(--color-success) 65%, var(--color-navy));
+  --app-loss-soft: color-mix(in oklab, var(--color-danger) 18%, var(--color-hueso));
+  --app-loss-deep: color-mix(in oklab, var(--color-danger) 65%, var(--color-navy));
+
+  /* ── Estados de interfaz que no son plata ─────────────────
+     La marca reserva success y danger para el dato financiero, así que un
+     aviso de sistema o una nota informativa no pueden pedirlos prestados: un
+     banner rojo de "sesión por vencer" se lee como una pérdida.
+
+     Champagne tampoco sirve: es el acento decorativo y da 1.9:1 sobre hueso
+     (ADR 0009 de piramide-inversiones). El aviso es un ámbar más anaranjado
+     y más profundo que champagne — se distingue de él por saturación y por
+     uso: champagne es relleno con navy encima, el aviso tiñe texto.
+
+     Misma construcción que ganancia y pérdida: base para ícono y borde,
+     `-soft` para el fondo, `-deep` para la tinta. */
+
+  --app-warning: #A9702C;
+  --app-warning-soft: color-mix(in oklab, var(--app-warning) 18%, var(--color-hueso));
+  --app-warning-deep: color-mix(in oklab, var(--app-warning) 65%, var(--color-navy));
+
+  --app-info: #3E7A8C;
+  --app-info-soft: color-mix(in oklab, var(--app-info) 18%, var(--color-hueso));
+  --app-info-deep: color-mix(in oklab, var(--app-info) 65%, var(--color-navy));
+}

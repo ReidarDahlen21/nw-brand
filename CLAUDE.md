@@ -94,6 +94,55 @@ import 'nw-brand/tokens/fonts.css';
 `react` es una peer dependency — el repo consumidor debe tener su propia
 versión de React instalada (>=18).
 
+## La capa de aplicación (`tokens/app.css`)
+
+Los tokens de arriba están calibrados para **marketing**: tamaños fluidos,
+espaciado generoso, el escalón de texto más chico en 12px. Vestir un
+producto denso —una tabla de cartera, un panel de trabajo— necesita
+palabras que la marca nunca tuvo que decir.
+
+Esas palabras viven en [`tokens/app.css`](tokens/app.css), **aparte y
+opt-in**:
+
+```js
+import 'nw-brand/tokens/colors.css';
+import 'nw-brand/tokens/spacing.css';
+import 'nw-brand/tokens/typography.css';
+import 'nw-brand/tokens/radius-shadow.css';
+import 'nw-brand/tokens/app.css';   // sólo productos densos
+```
+
+Qué agrega, todo con prefijo `--app-`:
+
+- **Densidad**: alturas de barra y de fila, altos de control, paddings de
+  tarjeta y de celda.
+- **Escalones tipográficos** por debajo del piso de marketing (11px) y entre
+  medio (13px). Los escalones que la marca ya define aparecen en la escala
+  `--app-text-*` **por referencia** (`var(--text-caption)`), no con un valor
+  propio.
+- **Radios chicos** (2px, 4px), porque `--radius-s` (6px) se nota redondo en
+  un control de 32px.
+- **Variantes suave y profunda de ganancia y pérdida** para las píldoras.
+  `--color-success` y `--color-danger` siguen siendo la tinta de marca y no
+  cambian: lo que se agrega es el fondo (`-soft`) y una tinta legible encima
+  de ese fondo (`-deep`, 4.5:1 sobre la píldora).
+- **Aviso e información** (`--app-warning`, `--app-info`), con la misma
+  construcción base/`-soft`/`-deep`.
+
+Dos reglas que sostienen todo esto:
+
+- **Es aditiva.** `tokens/app.css` no redefine ni un token de los otros
+  archivos. Si se descarta entero, la marca queda como estaba y ningún
+  consumidor de marketing se entera.
+- **Aviso e información no son success ni danger.** La marca reserva esos
+  dos para el dato financiero: un banner rojo de "sesión por vencer" se lee
+  como una pérdida. Y tampoco son champagne, que da 1.9:1 sobre hueso y es
+  relleno, no tinta.
+
+Los valores nuevos **no están en `design-tokens.json`**: ese archivo es el
+espejo de la marca, y esta capa es una extensión que no todos los
+consumidores cargan.
+
 ## Antes de crear un componente nuevo
 
 Revisá si ya existe algo equivalente en [`components/`](components) antes
