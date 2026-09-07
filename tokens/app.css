@@ -119,4 +119,26 @@
   --app-info: #3E7A8C;
   --app-info-soft: color-mix(in oklab, var(--app-info) 18%, var(--color-hueso));
   --app-info-deep: color-mix(in oklab, var(--app-info) 60%, var(--color-navy));
+
+  /* ── Esta capa es sólo para fondo claro ───────────────────
+     Las ocho variantes de arriba asumen que el contenido va sobre hueso, que
+     es lo que decidió ADR 0008 de piramide-inversiones: la Aplicación lleva
+     el navy en el shell (sidebar) y el contenido en claro. Por eso no hay
+     variantes `-on-dark` — no habría dónde usarlas hoy.
+
+     Si algún día hace falta un modo oscuro de verdad, la marca ya tiene el
+     vocabulario (`--surface-card-on-dark`, `--text-on-dark-primary`, y los
+     `onDark` de Card/Button/IconButton/Tabs). Pero **no se derivan con la
+     fórmula espejada**, y conviene saberlo antes de intentarlo:
+
+       color-mix(in oklab, var(--app-warning) 55%, var(--color-hueso))
+
+     da #C9A57E, que es champagne (#C9A567) con otro nombre. Un aviso sobre
+     navy construido así se lee como el acento decorativo de marca, que es
+     justo lo que estos tokens existen para no ser. La versión oscura del
+     aviso necesita su propia construcción, no un espejo de la clara.
+
+     Ganancia, pérdida e información no tienen ese problema: sus hues están
+     lejos de champagne y sí se pueden mezclar hacia hueso (medido: 6,5 a
+     7,1:1 sobre navy). El aviso es el único caso especial. */
 }
