@@ -33,7 +33,7 @@
 
   --app-bar-h: 40px;              /* barra de navegación superior */
   --app-bar-h-l: 48px;            /* variante con subnav o buscador */
-  --app-sidebar-w: 220px;         /* nav lateral — el ancho del kit de portal */
+  --app-sidebar-w: 240px;         /* nav lateral: entra un rótulo de dos palabras con su badge al lado sin partirse */
   --app-row-h: 32px;              /* fila de tabla densa */
   --app-control-h: 32px;          /* input, select, botón dentro de una tabla */
   --app-control-h-l: 40px;        /* el mismo control en un formulario */

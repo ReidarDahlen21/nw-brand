@@ -3,7 +3,7 @@ export function Shell({active,onNav,children}){
 const items=[{k:'dashboard',label:'Inicio',icon:'house'},{k:'portfolio',label:'Portafolio',icon:'chart-pie-slice'},{k:'chat',label:'Asesor',icon:'chat-circle-text'}];
 return (
 <div style={{display:'flex',minHeight:'100vh',background:'var(--color-hueso)',fontFamily:'var(--font-body)'}}>
-<div style={{width:220,background:'var(--color-navy)',color:'var(--color-hueso)',display:'flex',flexDirection:'column',padding:'28px 20px',gap:32,flexShrink:0}}>
+<div style={{width:240,background:'var(--color-navy)',color:'var(--color-hueso)',display:'flex',flexDirection:'column',padding:'28px 20px',gap:32,flexShrink:0}}>
 <img src="../../assets/logos/nucleo-horizontal-dark.svg" style={{height:26,width:'auto'}}/>
 <div style={{display:'flex',flexDirection:'column',gap:4}}>
 {items.map(it=>(
