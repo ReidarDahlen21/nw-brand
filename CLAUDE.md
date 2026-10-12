@@ -135,6 +135,12 @@ Qué agrega, todo con prefijo `--app-`:
   fondo (`-soft`) y la tinta (`-deep`). **El base no es tinta**: da 2,6:1
   sobre una tarjeta, así que cualquier cosa que tenga que leerse va en
   `-deep` (4,7:1 en el peor caso).
+- **Ganancia y pérdida sobre navy** (`--app-gain-on-dark`,
+  `--app-loss-on-dark`): la única variante oscura de la capa, para una cifra
+  de mercado escrita sobre el navy del shell (las cotizaciones de Órbita).
+  75 % del base hacia hueso: 5,57:1 y 5,08:1 sobre `--color-navy`, y **sólo
+  ahí** (sobre `--surface-card-on-dark` no llegan a 4,5:1). Van siempre con
+  ▲/▼ o el signo.
 - **Aviso e información** (`--app-warning`, `--app-info`), con la misma
   construcción base/`-soft`/`-deep`.
 

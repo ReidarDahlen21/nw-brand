@@ -87,6 +87,23 @@
   --app-loss-soft: color-mix(in oklab, var(--color-danger) 18%, var(--color-hueso));
   --app-loss-deep: color-mix(in oklab, var(--color-danger) 60%, var(--color-navy));
 
+  /* ── Ganancia y pérdida sobre navy ────────────────────────
+     La única excepción a "esta capa es para fondo claro" (abajo): una
+     variación de precio escrita sobre una franja o un panel navy (las
+     cotizaciones del shell de Órbita). Ahí `-soft` es un fondo y no se
+     distingue, `-deep` se hunde en el navy y el base no llega: hace falta
+     una tinta propia.
+
+     Misma receta que `-deep`, pero hacia hueso en vez de hacia navy (75 %
+     del base, 25 % hueso). Medidos sobre `--color-navy`: 5,57:1 (#76A388) y
+     5,08:1 (#C87F6D). **Sólo sobre navy pleno**: sobre
+     `--surface-card-on-dark` bajan a 4,44:1 y 4,04:1, que no alcanza para
+     una cifra chica. Siguen siendo la identidad del dato, así que van con
+     ▲/▼ o el signo: el sentido no puede depender sólo del color. */
+
+  --app-gain-on-dark: color-mix(in oklab, var(--color-success) 75%, var(--color-hueso));
+  --app-loss-on-dark: color-mix(in oklab, var(--color-danger) 75%, var(--color-hueso));
+
   /* Ojo: `--app-gain-soft` y `--app-loss-soft` son el mismo valor que el `bg`
      inline de los tonos success/danger de `components/core/Badge.jsx`. La
      duplicación es a propósito y no se puede quitar: Badge lo consume
@@ -124,7 +141,8 @@
      Las ocho variantes de arriba asumen que el contenido va sobre hueso, que
      es lo que decidió ADR 0008 de piramide-inversiones: la Aplicación lleva
      el navy en el shell (sidebar) y el contenido en claro. Por eso no hay
-     variantes `-on-dark` — no habría dónde usarlas hoy.
+     variantes `-on-dark`, salvo ganancia y pérdida (arriba), que tienen un
+     uso concreto: una cifra de mercado escrita sobre el navy del shell.
 
      Si algún día hace falta un modo oscuro de verdad, la marca ya tiene el
      vocabulario (`--surface-card-on-dark`, `--text-on-dark-primary`, y los
@@ -140,5 +158,6 @@
 
      Ganancia, pérdida e información no tienen ese problema: sus hues están
      lejos de champagne y sí se pueden mezclar hacia hueso (medido: 6,5 a
-     7,1:1 sobre navy). El aviso es el único caso especial. */
+     7,1:1 sobre navy al 55 %; ganancia y pérdida ya lo hacen al 75 %, ver
+     `--app-gain-on-dark`). El aviso es el único caso especial. */
 }
