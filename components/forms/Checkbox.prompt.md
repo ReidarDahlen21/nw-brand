@@ -2,6 +2,8 @@ Checkbox with champagne fill + navy checkmark when checked; hueso fill and a nav
 
 It is a real `<input type="checkbox">` with `appearance: none`, so keyboard, `disabled`, `aria-label` and screen readers behave like the native one. Any other input prop (`id`, `aria-label`, `name`…) passes through to the input, and `onChange` receives the native change event.
 
+Controlled only: the checkmark is drawn from the `checked` prop, not from the input's own state, so always pass `checked` together with `onChange`. There is no `defaultChecked`: used uncontrolled, the input would change and the drawing would not.
+
 ```jsx
 <Checkbox label="Acepto los términos" checked={agreed} onChange={e=>setAgreed(e.target.checked)} />
 
