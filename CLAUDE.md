@@ -136,11 +136,17 @@ Qué agrega, todo con prefijo `--app-`:
   sobre una tarjeta, así que cualquier cosa que tenga que leerse va en
   `-deep` (4,7:1 en el peor caso).
 - **Ganancia y pérdida sobre navy** (`--app-gain-on-dark`,
-  `--app-loss-on-dark`): la única variante oscura de la capa, para una cifra
+  `--app-loss-on-dark`): la variante oscura de la capa para una cifra
   de mercado escrita sobre el navy del shell (las cotizaciones de Órbita).
   75 % del base hacia hueso: 5,57:1 y 5,08:1 sobre `--color-navy`, y **sólo
   ahí** (sobre `--surface-card-on-dark` no llegan a 4,5:1). Van siempre con
   ▲/▼ o el signo.
+- **La escala de un mapa de calor sobre navy** (`--app-heat-loss-3` …
+  `--app-heat-flat` … `--app-heat-gain-3`, y `--app-heat-none` para "sin
+  dato"): los fondos de las celdas del Heatmap de Órbita. Cada escalón tiene
+  su tinta (hueso en los del medio y en `none`, navy en los dos extremos) y
+  el contraste de esa tinta está medido en `tokens/app.css` (4,56:1 en el
+  peor caso).
 - **Aviso e información** (`--app-warning`, `--app-info`), con la misma
   construcción base/`-soft`/`-deep`.
 

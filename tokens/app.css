@@ -104,6 +104,44 @@
   --app-gain-on-dark: color-mix(in oklab, var(--color-success) 75%, var(--color-hueso));
   --app-loss-on-dark: color-mix(in oklab, var(--color-danger) 75%, var(--color-hueso));
 
+  /* ── La escala de un mapa de calor sobre navy ─────────────
+     Siete escalones de variación (pérdida fuerte → ganancia fuerte) más el
+     gris de "sin dato", para un treemap pintado sobre un panel navy (el
+     Heatmap del S&P 500 de Órbita). Cada celda es un fondo con su texto
+     encima —el símbolo y la cifra—, así que lo que se mide es ese texto
+     sobre su fondo, a 4,5:1 como texto chico. Las rendijas entre celdas son
+     el navy del panel.
+
+     Los del medio se hunden hacia navy y llevan texto hueso; los extremos
+     salen hacia hueso y llevan texto navy. Medidos (texto sobre fondo):
+
+       loss-3  danger 80 % → hueso   #C57866  navy   4,73:1
+       loss-2  danger 70 % → navy    #854C42  hueso  5,55:1
+       loss-1  danger 38 % → navy    #523B39  hueso  8,44:1
+       flat    navy-tint-20          #3C464B  hueso  7,95:1
+       gain-1  success 38 % → navy   #294944  hueso  8,09:1
+       gain-2  success 70 % → navy   #3B6B59  hueso  5,02:1
+       gain-3  success 80 % → hueso  #6E9E83  navy   5,21:1
+       none    slate                 #5A6B72  hueso  4,56:1
+
+     Los extremos estaban al 85 % y con eso el de pérdida no llegaba con
+     ninguna tinta (2,96:1 con hueso, 4,41:1 con navy): bajaron al 80 %, los
+     dos, para que la escala siga simétrica. **La tinta va con el escalón**:
+     hueso en los cinco del medio y en `none`, navy en `loss-3` y `gain-3`;
+     la otra no llega en ninguno. `none` es slate a propósito, no un
+     escalón: una celda sin dato no se tiene que confundir con una que no se
+     movió (`flat`). Como en el resto de ganancia y pérdida, el color es la
+     identidad del dato y no lo único que lo dice: la celda lleva el signo. */
+
+  --app-heat-loss-3: color-mix(in oklab, var(--color-danger) 80%, var(--color-hueso));
+  --app-heat-loss-2: color-mix(in oklab, var(--color-danger) 70%, var(--color-navy));
+  --app-heat-loss-1: color-mix(in oklab, var(--color-danger) 38%, var(--color-navy));
+  --app-heat-flat: var(--navy-tint-20);
+  --app-heat-gain-1: color-mix(in oklab, var(--color-success) 38%, var(--color-navy));
+  --app-heat-gain-2: color-mix(in oklab, var(--color-success) 70%, var(--color-navy));
+  --app-heat-gain-3: color-mix(in oklab, var(--color-success) 80%, var(--color-hueso));
+  --app-heat-none: var(--color-slate);
+
   /* Ojo: `--app-gain-soft` y `--app-loss-soft` son el mismo valor que el `bg`
      inline de los tonos success/danger de `components/core/Badge.jsx`. La
      duplicación es a propósito y no se puede quitar: Badge lo consume
@@ -142,7 +180,8 @@
      es lo que decidió ADR 0008 de piramide-inversiones: la Aplicación lleva
      el navy en el shell (sidebar) y el contenido en claro. Por eso no hay
      variantes `-on-dark`, salvo ganancia y pérdida (arriba), que tienen un
-     uso concreto: una cifra de mercado escrita sobre el navy del shell.
+     uso concreto: una cifra de mercado escrita sobre el navy del shell, y la
+     escala del mapa de calor (`--app-heat-*`), que es de un panel navy.
 
      Si algún día hace falta un modo oscuro de verdad, la marca ya tiene el
      vocabulario (`--surface-card-on-dark`, `--text-on-dark-primary`, y los
