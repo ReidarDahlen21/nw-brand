@@ -5,5 +5,7 @@ export interface DialogProps {
   children?: ReactNode;
   onClose?: () => void;
   footer?: ReactNode;
+  /** `sm`: densidad de aplicación, requiere `tokens/app.css`. Por defecto `md`. */
+  size?: 'sm' | 'md';
 }
 export function Dialog(props: DialogProps): JSX.Element | null;
