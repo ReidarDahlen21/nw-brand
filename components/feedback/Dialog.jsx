@@ -1,8 +1,9 @@
 import React from 'react';
-// `sm` es la densidad de aplicación: lee los tokens de `tokens/app.css`, así
-// que sólo va donde esa capa está importada. `md` es el tamaño de marca.
+// `sm` es la densidad de aplicación, armada con tokens de marca: un componente
+// no puede leer `--app-*` (CLAUDE.md, "La capa de aplicación"). `md` es el
+// tamaño de marca.
 const sizes={
-sm:{box:{padding:'var(--space-6)'},title:{fontFamily:'var(--font-body)',fontSize:'var(--text-heading-m)',fontWeight:600,margin:'0 0 var(--space-3)'},body:{fontSize:'var(--app-text-m)',lineHeight:'var(--lh-normal)'},footer:{gap:'var(--space-2)',marginTop:'var(--space-6)'}},
+sm:{box:{padding:'var(--space-6)'},title:{fontFamily:'var(--font-body)',fontSize:'var(--text-body-l)',fontWeight:600,margin:'0 0 var(--space-3)'},body:{fontSize:'var(--text-body-s)',lineHeight:'var(--lh-normal)'},footer:{gap:'var(--space-2)',marginTop:'var(--space-6)'}},
 md:{box:{padding:'var(--space-8)'},title:{fontFamily:'var(--font-accent)',fontSize:'var(--text-heading-l)',margin:'0 0 12px'},body:{fontSize:'var(--text-body-m)',lineHeight:'var(--lh-relaxed)'},footer:{gap:12,marginTop:'var(--space-8)'}}
 };
 export function Dialog({open,title,children,onClose,footer,size='md'}){

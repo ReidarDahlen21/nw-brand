@@ -5,7 +5,7 @@ export interface SelectProps {
   options?: (SelectOption | string)[];
   value?: string;
   onChange?: ChangeEventHandler;
-  /** `sm`: densidad de aplicación, requiere `tokens/app.css`. Por defecto `md`. */
+  /** `sm`: densidad de aplicación (no requiere `tokens/app.css`). Por defecto `md`. */
   size?: 'sm' | 'md';
   style?: CSSProperties;
 }
