@@ -147,6 +147,15 @@ Qué agrega, todo con prefijo `--app-`:
   su tinta (hueso en los del medio y en `none`, navy en los dos extremos) y
   el contraste de esa tinta está medido en `tokens/app.css` (4,56:1 en el
   peor caso).
+- **La paleta de los gráficos** (`--app-chart-*`): las series (valor,
+  puesto, espejo, ganancia y pérdida), el eje, la grilla, el hueco entre
+  porciones, la caja del tooltip y seis categorías en orden fijo (`-1` …
+  `-6`, más `-otro`). Medida contra hueso **y contra la tarjeta**, que es
+  donde va un gráfico: 3:1 lo que no es texto, 4,5:1 el eje. Champagne base
+  no va en un gráfico (1,9:1). Las categorías no se separan como una paleta
+  genérica (ΔE mínimo 8,0, medido en `tokens/app.css`): nunca van sin
+  rótulo, y una séptima categoría es el color del pariente rayado, no un
+  color nuevo.
 - **Aviso e información** (`--app-warning`, `--app-info`), con la misma
   construcción base/`-soft`/`-deep`.
 

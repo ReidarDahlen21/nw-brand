@@ -175,6 +175,78 @@
   --app-info-soft: color-mix(in oklab, var(--app-info) 18%, var(--color-hueso));
   --app-info-deep: color-mix(in oklab, var(--app-info) 60%, var(--color-navy));
 
+  /* ── Gráficos ─────────────────────────────────────────────
+     La paleta de los gráficos del producto (Métricas de Órbita, #804 de
+     nucleo-wealth). Un gráfico va sobre la tarjeta (`--surface-card-on-light`,
+     #D7D2C8), que es más oscura que el hueso: todo se mide contra las dos, y
+     manda la tarjeta. Lo que no es texto pide 3:1 (WCAG 1.4.11); el texto de
+     los ejes, 4,5:1. Medidos (contra hueso / contra tarjeta):
+
+       valor    navy                        #16242B  13,05 / 10,55
+       puesto   slate                       #5A6B72   4,56 /  3,69
+       espejo   champagne 60 % → navy       #7C6E51   4,10 /  3,31
+       eje      slate 80 % → navy           #4B5C63   5,73 /  4,63  (texto)
+       gain     = --app-gain-deep           #356053   5,85 /  4,73
+       loss     = --app-loss-deep           #75473F   6,32 /  5,11
+
+     **Champagne base no va en un gráfico**: 1,90:1 sobre hueso y 1,54:1
+     sobre la tarjeta. La Referencia (la cartera espejo) usa el champagne
+     corrido a navy, que sí llega. Lo puesto se distingue del valor también
+     por el trazo (punteado), no sólo por el color. Ganancia y pérdida en un
+     gráfico (barras del desglose) son las `-deep`: los base no llegan a 3:1
+     sobre la tarjeta (2,64:1 y 2,99:1).
+
+     **Las categorías** (`--app-chart-1` … `-6`, una torta por tipo) salen de
+     los tonos de marca —navy, slate, info y champagne— hacia navy, y el
+     orden es fijo: cada slot es de una entidad, nunca de un puesto en el
+     ranking. Medidos:
+
+       1  navy                          #16242B  13,05 / 10,55
+       2  info 95 % + champagne         #477C8B   3,81 /  3,08
+       3  champagne 35 % → navy         #504E42   6,87 /  5,56
+       4  champagne 55 % → navy         #73684E   4,52 /  3,65
+       5  slate 30 % → navy             #29383F   9,96 /  8,05
+       6  info 75 % → navy              #346372   5,43 /  4,39
+
+     **Límite medido, a sabiendas**: una paleta de marca de croma tan bajo,
+     oscura para llegar a 3:1 sobre la tarjeta, no separa seis tonos como
+     una paleta genérica. La distancia mínima entre dos slots cualesquiera
+     es ΔE 8,0 (OKLab ×100, visión normal, 1 contra 5) y 7,4 con daltonismo
+     (protan, 4 contra 6); en el orden de arriba, dos vecinos nunca bajan de
+     9,5. Por eso **una categoría nunca se identifica sólo por el color**:
+     el gráfico separa las porciones con un hueco del color de la tarjeta
+     (`--app-chart-hueco`) y lleva al lado la leyenda en el mismo orden, con
+     el rótulo y la cifra de cada una. Más de seis categorías no son
+     colores nuevos: se repite el color del pariente con rayado
+     (`--app-chart-hueco` a 45°), y lo que no tiene categoría va en
+     `--app-chart-otro` rayado.
+
+     `--app-chart-area` es el relleno del área bajo el valor (decorativo: la
+     línea es la que llega a 3:1) y `--app-chart-grilla` las líneas de la
+     grilla, recesivas a propósito. `--app-chart-caja` / `-caja-borde` son
+     la caja chica del tooltip, la misma para todos los gráficos, con texto
+     navy encima. */
+
+  --app-chart-valor: var(--color-navy);
+  --app-chart-area: color-mix(in oklab, var(--color-navy) 8%, transparent);
+  --app-chart-puesto: var(--color-slate);
+  --app-chart-espejo: color-mix(in oklab, var(--color-champagne) 60%, var(--color-navy));
+  --app-chart-gain: var(--app-gain-deep);
+  --app-chart-loss: var(--app-loss-deep);
+  --app-chart-eje: color-mix(in oklab, var(--color-slate) 80%, var(--color-navy));
+  --app-chart-grilla: color-mix(in oklab, var(--color-navy) 12%, transparent);
+  --app-chart-hueco: var(--surface-card-on-light);
+  --app-chart-caja: var(--color-hueso);
+  --app-chart-caja-borde: color-mix(in oklab, var(--color-navy) 15%, transparent);
+
+  --app-chart-1: var(--color-navy);
+  --app-chart-2: color-mix(in oklab, var(--app-info) 95%, var(--color-champagne));
+  --app-chart-3: color-mix(in oklab, var(--color-champagne) 35%, var(--color-navy));
+  --app-chart-4: color-mix(in oklab, var(--color-champagne) 55%, var(--color-navy));
+  --app-chart-5: color-mix(in oklab, var(--color-slate) 30%, var(--color-navy));
+  --app-chart-6: color-mix(in oklab, var(--app-info) 75%, var(--color-navy));
+  --app-chart-otro: var(--color-slate);
+
   /* ── Esta capa es sólo para fondo claro ───────────────────
      Las ocho variantes de arriba asumen que el contenido va sobre hueso, que
      es lo que decidió ADR 0008 de piramide-inversiones: la Aplicación lleva
